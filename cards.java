@@ -1,0 +1,156 @@
+package Project_by_Group8;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class Bank implements ActionListener  {
+
+    JFrame f;
+    JLabel l1,l2,l3,l4;
+    JTextField t1, t2, t3;
+    JButton b1, b2;
+    // JButton card, upi;
+
+    Bank() {
+        f = new JFrame("Net banking");
+        l1 = new JLabel("Card number");
+        l2 = new JLabel("CVV");
+        l3 = new JLabel("PIN");
+        l4 = new JLabel("Card Payment");
+
+        t1 = new JTextField();
+        t2 = new JTextField();
+        t3 = new JTextField();
+
+        b1 = new JButton("PAY NOW");
+        b2 = new JButton("CANCEL");
+
+        l1.setFont(new Font("Serif", Font.PLAIN, 20));
+        l2.setFont(new Font("Serif", Font.PLAIN, 20));
+        l3.setFont(new Font("Serif", Font.PLAIN, 20));
+        l4.setFont(new Font("Serif", Font.BOLD, 35));
+
+        l1.setBounds(250, 100, 200, 30);
+        l2.setBounds(250, 150, 100, 30);
+        l3.setBounds(250, 200, 100, 30);
+        l4.setBounds(275, 25, 400, 60);
+        t1.setBounds(370, 100, 120, 30);
+        t2.setBounds(370, 150, 120, 30);
+        t3.setBounds(370, 200, 120, 30);
+
+        b1.setBounds(280, 250, 100, 30);
+        b2.setBounds(410, 250, 100, 30);
+
+
+        f.add(b1);
+        f.add(b2);
+
+        f.add(l1);
+        f.add(l2);
+        f.add(l3);
+        f.add(l4);
+        f.add(t1);
+        f.add(t2);
+        f.add(t3);
+
+        f.getContentPane().setBackground(Color.orange);
+        f.setLayout(null);
+        f.setSize(800,400);
+        f.setVisible(true);
+
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+    }
+
+
+
+
+
+@Override
+    public void actionPerformed(ActionEvent e)
+    {
+        if(e.getSource() == b1)
+        {
+            // after clicking on b1 -> before exiting the screen validate whether all text fields are filled or not
+            if(t1.getText().equals(""))
+            {
+                JOptionPane.showMessageDialog(f,"All fields are mandatory... Please Fill it..");
+            }
+            else if (t2.getText().equals("")){
+                JOptionPane.showMessageDialog(f,"All fields are mandatory... Please Fill it..");
+            }
+            else if (t3.getText().equals("")){
+                JOptionPane.showMessageDialog(f,"All fields are mandatory... Please Fill it..");
+            }
+            else
+            {
+                // f1.setVisible(true); 
+                MyCanvas obj = new MyCanvas();
+                f.setVisible(false);
+                //MyCanvas.MyCanvas();
+                // obj.qrCode();
+                // f1.add(obj);
+                // f1.setVisible(true); 
+                //pay pm = new pay();
+                //JOptionPane.showMessageDialog(f,"Successfully Paid...");
+                
+                // MyCanvas m = new MyCanvas();
+                // m.paint(g);
+                //f.setVisible(false);
+            }
+
+
+
+            // USE JDBC concept and store all the data in CUSTOMER_DETAILS table ;
+        }
+
+        if(e.getSource() == b2)
+        {
+            f.setVisible(false);
+        }
+    }
+}
+
+
+
+
+
+public class cards {
+    public static void main (String[] args){
+        Bank obj = new Bank();
+    }
+}
+
+class MyCanvas extends Canvas {
+
+    // MyCanvas obj = new MyCanvas();
+    
+    MyCanvas() {
+        // f1.setVisible(true); 
+        qrCode();
+    }
+      
+    // public void paint(Graphics g) {  
+    //     Toolkit t=Toolkit.getDefaultToolkit();  
+    //     Image i=t.getImage("qr.jpeg");  
+    //     g.drawImage(i, 120,60,this);  
+    // }  
+    
+    public void qrCode() {  
+        // MyCanvas obj = new MyCanvas(); 
+        JFrame f1=new JFrame("QR code for ticket");
+        JLabel l = new JLabel();  
+        JLabel i = new JLabel();
+        l.setText("Scan this QR code to get your ticket.");  
+        l.setFont(new Font("Serif", Font.BOLD, 25));
+        l.setBounds(200,500,500,40);
+        f1.add(l);
+        // f1.add(obj);
+        f1.add(new JLabel(new ImageIcon("qr.jpeg")));  
+        f1.setSize(800,600);  
+        f1.getContentPane().setBackground(Color.orange);
+        f1.setVisible(true);  
+    }  
+}
